@@ -8,28 +8,21 @@ var snare = new Audio('sounds/snare.wav');
 var tink = new Audio('sounds/tink.wav');
 var tom = new Audio('sounds/tom.wav');
 
-
-var prevKey;
-
 const animate = (input) => {
-    var elements = document.getElementsByClassName(input);
-    console.log(elements);
+    var elements = document.getElementsByClassName(input);    
     for (let i = 0; i < elements.length; i++) {
-        elements[i].classList.add('pressed');
-    };
-
-    
+        elements[i].style.color = "white";
+    elements[i].style.transform = "scale(1.1)";
+    }    
 }
 
 const remove = (foo) => {
-    var elements = document.getElementsByClassName(foo);
-    console.log(elements);
+    var elements = document.getElementsByClassName(foo);    
     for (let i = 0; i < elements.length; i++) {
-        elements[i].classList.remove('pressed');
-    };
-
+        elements[i].style.color = " #b8b57e";
+    elements[i].style.transform = "scale(1)";
+    }
 }
-
 
 document.addEventListener("keydown", event => {
     var keyName = event.key;
@@ -62,5 +55,7 @@ document.addEventListener("keydown", event => {
         case 'l':
             tom.play();
     }
-    remove(keyName);
+    window.setTimeout(() => {
+        remove(keyName);
+    },300);    
 });
